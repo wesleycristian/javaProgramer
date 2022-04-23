@@ -1,4 +1,4 @@
-package Apostila02;
+package TestConexao;
 
 import java.sql.*;
 

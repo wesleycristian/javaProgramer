@@ -1,11 +1,15 @@
 package TestConexao;
 
 public class Aluno {
-    @ID
-	private long alunosID;
+    
+	private long idAlunos;
 	private String nome;
 	private int telefone;
-	public Aluno(String nome, int telefone) {
+	private long media;
+	public void setMedia(long media) {
+		this.media = media;
+	}
+	public Aluno() {
 		super();
 		this.nome = nome;
 		this.telefone = telefone;
@@ -21,5 +25,29 @@ public class Aluno {
 	}
 	public void setTelefone(int telefone) {
 		this.telefone = telefone;
+	}
+	public void setTelefone(String text) {
+		// TODO Auto-generated method stub
+		
+	}
+	public void setNota1(float parseFloat) {
+		// TODO Auto-generated method stub
+		
+	}
+	public void setNota2(float parseFloat) {
+		// TODO Auto-generated method stub
+		
+	}
+	public void setNota3(float parseFloat) {
+		// TODO Auto-generated method stub
+		
+	}
+	public Object getMedia() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public void setMedia(Object media) {
+		// TODO Auto-generated method stub
+		
 	}
 }

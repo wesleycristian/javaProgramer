@@ -21,12 +21,12 @@ public class TestarConexao {
 
 	public static void main(String args[]) throws DAOException {
 		TestarConexao b = new TestarConexao();
-		Aluno a1 = new Aluno ("isac", 22345677);
+	
 		
 		b.openDB();
 		b.mostra();
 		//b.closedDB();
-        b.persist(a1);
+    
 	}
 
 	public static void openDB() {

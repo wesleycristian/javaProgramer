@@ -1,8 +1,5 @@
-package cap03;
+package Cap03;
 
-import java.util.Scanner;
-
-import javax.swing.JOptionPane;
 
 public class Laboratorio2 {
 
