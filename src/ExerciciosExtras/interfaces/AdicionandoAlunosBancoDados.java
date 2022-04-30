@@ -25,10 +25,11 @@ public class AdicionandoAlunosBancoDados extends JFrame
 implements ActionListener, FocusListener{
 	JButton botaoGravar;
 	JButton botaoSair; 
-	JTextField txtID, txtNota1, txtNota2, txtNota3 , txtmedia,
+	JTextField txtID, txtNota1, txtNota2, txtNota3 , txtMedia,
 	txtNome, txtTelefone;
 	public AdicionandoAlunosBancoDados()
 	{//construtor da classe TesteJFrame
+		
 		setTitle("Cadastro de Alunos");//Titulo da janela
 		int larguraTela = 880;
 		int alturaTela = 250;
@@ -40,7 +41,7 @@ implements ActionListener, FocusListener{
 		//Linha 1
 		int linha = 25;//altura da linha
 		int topo = 20;
-		JLabel rotuloID = criarRotulo("Código");
+		JLabel rotuloID = criarRotulo("idAluno");
 		txtID = criarCaixaTexto();
 		JLabel rotuloNome = criarRotulo("Nome");
 		txtNome = criarCaixaTexto();		
@@ -62,9 +63,9 @@ implements ActionListener, FocusListener{
 		txtNota2 = criarCaixaTexto();
 		JLabel rotuloNota3 = criarRotulo("3ª Nota");
 		txtNota3 = criarCaixaTexto();
-		JLabel rotulomedia = criarRotulo("Média");	
-		txtmedia = criarCaixaTexto();
-		txtmedia.setEditable(false);	
+		JLabel rotuloMedia = criarRotulo("Média");	
+		txtMedia = criarCaixaTexto();
+		txtMedia.setEditable(false);	
 
 		rotuloNota1.setBounds(30, topo, 80, linha);//50 posição x, 30 posição y, 100 largura, 30 altura
 		txtNota1.setBounds(100, topo, 100, linha);
@@ -75,9 +76,9 @@ implements ActionListener, FocusListener{
 		rotuloNota3.setBounds(455, topo, 80, linha);//50 posição x, 30 posição y, 100 largura, 30 altura
 		txtNota3.setBounds(525, topo, 100, linha);
 		txtNota3.setHorizontalAlignment(0);
-		rotulomedia.setBounds(665, topo, 80, linha);//50 posição x, 30 posição y, 100 largura, 30 altura
-		txtmedia.setBounds(730, topo, 100, linha);
-		txtmedia.setHorizontalAlignment(0);
+		rotuloMedia.setBounds(665, topo, 80, linha);//50 posição x, 30 posição y, 100 largura, 30 altura
+		txtMedia.setBounds(730, topo, 100, linha);
+		txtMedia.setHorizontalAlignment(0);
 
 		//Linha 5
 		topo+=120;
@@ -101,8 +102,8 @@ implements ActionListener, FocusListener{
 		add(txtNota2);
 		add(rotuloNota3);
 		add(txtNota3);
-		add(rotulomedia);
-		add(txtmedia);		
+		add(rotuloMedia);
+		add(txtMedia);		
 		add(botaoGravar);
 		add(botaoSair);	
 		txtNome.requestFocus();
@@ -151,8 +152,8 @@ implements ActionListener, FocusListener{
 				&& !(txtNome.getText().equals(""))
 				&& !(txtTelefone.getText().equals(""))
 				&& !(txtNota1.getText().equals(""))
-				&& !(txtNota2.getText().equals(""))
-				&& !(txtNota3.getText().equals("")))
+				&& !(txtNota2.getText().equals("")))
+                
 			{
 				try 
 				{
@@ -181,19 +182,19 @@ implements ActionListener, FocusListener{
 		ResultSet rs=null;
 		PreparedStatement ps=null;
 		
-			novo = new Aluno();
-			ps = cn.prepareStatement(
-					"INSERT INTO Alunos VALUES (?, ?, ?, ?, ?, ?, ?)");
-			novo.setNome(txtNome.getText());
-			novo.setTelefone(txtTelefone.getText());
-			novo.setNota1(Float.parseFloat(txtNota1.getText()));
-			novo.setNota2(Float.parseFloat(txtNota2.getText()));
-			novo.setNota3(Float.parseFloat(txtNota3.getText()));
-			novo.setmedia(novo.getmedia());
-			//Percorrendo a tabela de alunos buscando o último ID
-			rs = st.executeQuery("SELECT idAlunos FROM Alunos");           
-			int id=0;
-			while (rs.next()) 
+		novo = new Aluno();
+		ps = cn.prepareStatement(
+				"INSERT INTO Alunos VALUES (?, ?, ?, ?, ?, ?, ?)");
+		novo.setNome(txtNome.getText());
+		novo.setTelefone(txtTelefone.getText());
+		novo.setNota1(Float.parseFloat(txtNota1.getText()));
+		novo.setNota2(Float.parseFloat(txtNota2.getText()));
+		novo.setNota3(Float.parseFloat(txtNota3.getText()));
+		novo.setMedia(novo.getMedia());
+		//Percorrendo a tabela de alunos buscando o último ID
+		rs = st.executeQuery("SELECT idAlunos FROM Alunos");           
+		int id=0;
+		while (rs.next()) 
 			{
 				id = rs.getInt("idAlunos");
 			}
@@ -203,7 +204,7 @@ implements ActionListener, FocusListener{
 			ps.setFloat(4, novo.getNota1());
 			ps.setFloat(5, novo.getNota2());
 			ps.setFloat(6, novo.getNota3());
-			ps.setFloat(7, novo.getmedia());
+			ps.setFloat(7, novo.getMedia());
 			ps.executeUpdate();
 			JOptionPane.showMessageDialog(null, "Aluno cadastrado com sucesso!!!");
 			
@@ -226,7 +227,7 @@ implements ActionListener, FocusListener{
 		&& !(txtNota1.getText().equals(""))
 		&& !(txtNota2.getText().equals(""))
 		&& !(txtNota3.getText().equals("")))
-	  {	txtmedia.setText(""+(Float.parseFloat(txtNota1.getText().toString())+
+	  {	txtMedia.setText(""+(Float.parseFloat(txtNota1.getText().toString())+
 				Float.parseFloat(txtNota2.getText()) + 
 				Float.parseFloat(txtNota3.getText()))/3);
 	  	botaoGravar.setEnabled(true);
@@ -245,7 +246,7 @@ implements ActionListener, FocusListener{
 		txtNota1.setText("");
 		txtNota2.setText("");
 		txtNota3.setText("");
-		txtmedia.setText("");
+		txtMedia.setText("");
 		botaoGravar.setEnabled(false);
 	}
 }

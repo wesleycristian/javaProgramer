@@ -49,7 +49,7 @@ public class Aluno {
 	}
 	public float getMedia() 
 	{
-		//media = getNota1() + getNota2() + getNota3() + /2;
+		media = (getNota1() + getNota2() + getNota3 ()) /3;
 		return media;
 	}
 	public void setMedia(float media) {
@@ -73,12 +73,5 @@ public class Aluno {
 				getIdAluno(), getNome(),  getTelefone(),getNota1(),getNota2(),
 				getNota3(),getMedia()) + "]";
 	}
-	public float getmedia() {
-		// TODO Auto-generated method stub
-		return 0;
+
 	}
-	public void setmedia(float getmedia) {
-		// TODO Auto-generated method stub
-		
-	}
-}
